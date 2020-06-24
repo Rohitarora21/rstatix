@@ -72,7 +72,7 @@ two_sample_test <- function(data, formula, method = "t.test", ref.group = NULL, 
   test.function <- method
   test.args <- list()
   grp1 <- grp2 <- NULL
-  outcome <- get_formula_left_hand_side(formula)
+  outcome <- get_formula_left_hand(formula)
   group <- get_formula_right_hand_side(formula)
   # One sample mean comparison =========================
   if (.is_empty(group)) {
@@ -129,7 +129,7 @@ pairwise_two_sample_test <- function(data, formula, method = "t.test",
         )
     return(res)
   }
-  outcome <- get_formula_left_hand_side(formula)
+  outcome <- get_formula_left_han(formula)
   group <- get_formula_right_hand_side(formula)
   data <- data %>% .as_factor(group, ref.group = ref.group)
   group.levels <- data %>% get_levels(group)
@@ -155,7 +155,7 @@ two_sample_test_one_vs_all <- function(data, formula, method = "t.test", p.adjus
           detailed = detailed, ...)
     return(results)
   }
-  outcome <- get_formula_left_hand_side(formula)
+  outcome <- get_formula_left_hand(formula)
   group <- get_formula_right_hand_side(formula)
   new.data <- create_data_with_all_ref_group(data, outcome, group)
   pairwise_two_sample_test(
