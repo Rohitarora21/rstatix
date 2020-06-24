@@ -8,7 +8,7 @@ compare_mean <- function(  data, formula, method = "t.test", paired = FALSE,
                            p.adjust.method = "holm", detailed = FALSE, ...)
 {
 
-  outcome <- get_formula_left_hand_side(formula)
+  outcome <- get_formula_left_hand(formula)
   group <- get_formula_right_hand_side(formula)
   number.of.groups <- guess_number_of_groups(data, group)
 
